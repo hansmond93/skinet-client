@@ -16,7 +16,7 @@ import { ShopRoutingModule } from './shop-routing.module';
     ShopRoutingModule
   ],
   exports: [
-    // ShopComponent, we also dont need to export this component cuz it's now being loaded by the app module
+    // ShopComponent, we also dont need to export this component cuz it's now being loaded by the Shop module
   ]
 })
 export class ShopModule { }
