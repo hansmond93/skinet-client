@@ -24,7 +24,7 @@ export class AccountService {
       return of(null);
     }
     let headers = new HttpHeaders();
-    headers = headers.set('Authourization', `Bearer ${token}`);
+    headers = headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.get(this.baseUrl + 'account', {headers}).pipe(
       map((user: IUser) => {
@@ -37,7 +37,7 @@ export class AccountService {
   }
 
   login(values: any) {
-    return this.http.post(this.baseUrl + 'accountllogin', values).pipe(
+    return this.http.post(this.baseUrl + 'account/login', values).pipe(
       map((user: IUser) => {
         if (user) {
           localStorage.setItem('token', user.token);
@@ -48,7 +48,7 @@ export class AccountService {
   }
 
   register(values: any) {
-    return this.http.post(this.http + 'account/register', values).pipe(
+    return this.http.post(this.baseUrl + 'account/register', values).pipe(
       map((user: IUser) => {
         if (user) {
           localStorage.setItem('token', user.token);

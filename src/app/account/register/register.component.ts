@@ -11,16 +11,17 @@ import { AccountService } from '../account.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  regiterForm: FormGroup;
+  registerForm: FormGroup;
   errors: string[];
 
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
+    this.createRegisterForm();
   }
 
   createRegisterForm() {
-    this.regiterForm = this.fb.group({
+    this.registerForm = this.fb.group({
       displayName: [null, [Validators.required]],
       email: [null, [Validators.required,
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')],
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.accountService.register(this.regiterForm.value).subscribe( res => {
+    this.accountService.register(this.registerForm.value).subscribe( res => {
       this.router.navigateByUrl('/shop');
     }, error => {
       console.log(error);
